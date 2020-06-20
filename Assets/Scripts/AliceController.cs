@@ -22,8 +22,14 @@ public class AliceController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         //UnityEngine.Debug.Log(horizontal);
         Vector2 position = transform.position;
-        position.x = position.x + 10f * horizontal*Time.deltaTime;
-        position.y = position.y + 10f * vertical*Time.deltaTime;
+
+        var x = (position.x + 10f * horizontal * Time.deltaTime);
+        var y = (position.y + 10f * vertical * Time.deltaTime);
+
+
+        position.x = x>10?10:(x<-10?-10:x);
+        position.y = y>10?10:(y<-10?-10:y);
+        
         UnityEngine.Debug.Log(Time.deltaTime);
         transform.position = position;
     }
